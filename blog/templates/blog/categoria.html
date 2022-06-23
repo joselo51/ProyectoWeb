@@ -1,0 +1,42 @@
+{% extends "ProyectoWebApp/base.html" %}
+ <!-- Ver el video 10 -->
+{% load static %}
+{% block content %}
+
+{% for post in posts %}
+ 
+  
+<section class="page-section clearfix">
+  <div class="container">
+    <div class="intro">
+      <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style= "width: 30%;">
+      <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <h2 class="section-heading mb-4" >
+          <span class="section-heading-lower">{{post.titulo}}</span>
+        
+         <span class="section-heading-upper">{{post.contenido}}</span>
+         <div style="text-align:left; font-size: 0.3em;">Autor: {{post.autor}}</div>  
+                   
+         </h2>
+          
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endfor %}
+<setion>
+<div style="width: 75%; margin: auto; text-align: center; color: white;" >
+
+Categorías:
+{% for post in posts %} 
+  {% for categoria in post.categorias.all %}
+   {{categoria.nombre}}</a> &nbsp &nbsp 
+
+  {% endfor %}
+{% endfor %}
+</div>
+</section>
+{% endblock %}
